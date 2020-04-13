@@ -60,13 +60,13 @@ let users = [
     }
 ];
 
-export const getUserView = (userData:any) => {
+export const getUserView = (userData) => {
     let roles = userData.roles;
-    let View:any = {};
-    roles.forEach((role:any)=> {
-        role.permissions.forEach((permission:any)=>{
+    let View = {};
+    roles.forEach((role)=> {
+        role.permissions.forEach((permission)=>{
             if(View[permission.Group]){
-                if(!View[permission.Group].some((user:any)=>user.ID === permission.ID)) {
+                if(!View[permission.Group].some((user)=>user.ID === permission.ID)) {
                     View[permission.Group].push(permission);
                 }
             } else {

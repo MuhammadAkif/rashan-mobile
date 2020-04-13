@@ -3,7 +3,7 @@ import {store} from '../index';
 import { SERVER_URL } from "../config";
 
 const getJwt = () => {
-    const { user }: any = store.getState().user_reducer;
+    const { user } = store.getState().user_reducer;
 
     if (user && user.token) {
         return 'Bearer ' + user.token;
@@ -13,9 +13,9 @@ const getJwt = () => {
 
 
 
-const getOptions = (isFile: any) => {
+const getOptions = (isFile) => {
 
-    let options:any = {
+    let options = {
         withCredentials:true,
         "headers": {
             "Content-Type": "application/json",
@@ -33,9 +33,9 @@ const getOptions = (isFile: any) => {
 
 };
 
-const prepareUrl = (api:string) => `${SERVER_URL}${api}`;
+const prepareUrl = (api) => `${SERVER_URL}${api}`;
 
-axios.interceptors.response.use((response:any) => {
+axios.interceptors.response.use((response) => {
     if (response && !response.status &&response.message == "AuthenticationFailure") {
         window.location.replace(`${SERVER_URL}/api/auth/openid`);
     }
@@ -48,11 +48,11 @@ axios.interceptors.response.use((response:any) => {
 });
 
 const wrapper = {
-    get: (api:string, isFile = false) => axios.get(prepareUrl(api), getOptions(isFile)),
-    post: (api:string, formData = {}, isFile = false) => axios.post(prepareUrl(api), formData, getOptions(isFile)),
-    put: (api:string, formData = {}) => axios.put(prepareUrl(api), formData, getOptions(null)),
-    patch: (api:string, formData = {}, isFile = false) => axios.patch(prepareUrl(api), formData, getOptions(isFile)),
-    delete: (api: string) => axios.delete(prepareUrl(api), getOptions(null)),
+    get: (api, isFile = false) => axios.get(prepareUrl(api), getOptions(isFile)),
+    post: (api, formData = {}, isFile = false) => axios.post(prepareUrl(api), formData, getOptions(isFile)),
+    put: (api, formData = {}) => axios.put(prepareUrl(api), formData, getOptions(null)),
+    patch: (api, formData = {}, isFile = false) => axios.patch(prepareUrl(api), formData, getOptions(isFile)),
+    delete: (api) => axios.delete(prepareUrl(api), getOptions(null)),
 };
 
 export default wrapper;
