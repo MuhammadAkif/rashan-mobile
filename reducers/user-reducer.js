@@ -2,13 +2,6 @@ import {
     SET_USER,
     SET_USERS_ERROR,
     SET_USERS_PROCESSING,
-    SET_SEARCHED_USERS,
-    GET_ALL_USERS,
-    SET_EDIT_USER,
-    SET_DEPARTMENTS,
-    SET_USER_ROLES,
-    SET_VIEWS,
-    SET_TOTAL_USERS
 } from '../action-types/user-action-types';
 
 
@@ -18,13 +11,7 @@ const initState = () => {
         message: 'Unable to find user data',
         error: null,
         user: null,
-        allUsers: [],
-        searchedUsers: null,
-        editingUser: null,
-        RolesArray: null,
-        Departments: null,
-        views: null,
-        totalUsers:null
+
     };
 };
 
