@@ -12,14 +12,14 @@ function MyStack() {
       <Stack.Navigator>
      
         <Stack.Screen
-          name="Home"
+          name="Login"
           component={Login}
           options={{title: 'Login Page', headerTitleAlign:'center'}}
         />
          <Stack.Screen
           name="Home"
           component={Home}
-          options={{title: 'Login Page', headerTitleAlign:'center'}}
+          options={{headerShown:false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
