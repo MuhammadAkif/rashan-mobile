@@ -7,6 +7,7 @@ import App from './App';
 import { name as appName } from './app.json';
 
 import { Provider } from 'react-redux';
+import React, {Component} from 'react';
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose } from 'redux';
 import reducer from './reducers';
@@ -19,6 +20,14 @@ export const store = createStore(
     composeEnhancer(applyMiddleware(thunk))
 );
 
-AppRegistry.registerComponent(appName, () => <Provider store={store}>
-    <App />
-</Provider>);
+class RashanApp extends React.Component {
+
+    render() {
+        return (
+            <Provider store={store}>
+            <App />
+        </Provider>);
+    }
+}
+
+AppRegistry.registerComponent(appName, () => RashanApp);
